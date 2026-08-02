@@ -1,0 +1,943 @@
+import calendar
+from datetime import date
+from PIL import Image, ImageTk
+
+
+# ============================================================
+# 🔧 NAPTÁR BEÁLLÍTÁSOK
+# ============================================================
+
+# ------------------------------------------------------------
+# 📺 KIJELZŐ
+# ------------------------------------------------------------
+
+KEPERNYO_SZELESSEG = 800
+KEPERNYO_MAGASSAG = 480
+
+
+# ------------------------------------------------------------
+# 🎨 ALAPSZÍNEK
+# ------------------------------------------------------------
+
+# Teljes naptár háttere
+HATTER_SZIN = "#071426"
+
+# Felső év + hónap felirat
+HONAP_SZOVEG_SZIN = "#F4D35E"
+
+# Hétköznapok feliratainak színe
+HETKOZNAP_SZOVEG_SZIN = "#FFFFFF"
+
+# Szombat / vasárnap külön színe
+SZOMBAT_SZOVEG_SZIN = "#58A6FF"
+VASARNAP_SZOVEG_SZIN = "#FF78A8"
+
+
+# ------------------------------------------------------------
+# ☀️🌙 MŰSZAK KÁRTYÁK SZÍNEI
+# ------------------------------------------------------------
+
+NAPPAL_NEGYZETSZIN = "#D6B94C"
+EJSZAKA_NEGYZETSZIN = "#263B55"
+SZABADNAP_NEGYZETSZIN = "#3F8F62"
+
+# A kártyák körvonalának alap színe
+NAP_KERETSZIN = "#FFFFFF"
+
+# Normál napokon ennyire legyen vastag a keret
+NAP_KERETVASTAGSAG = 0
+
+# Aktuális nap külön kerete
+AKTUALIS_NAP_KERETSZIN = "#FF4B4B"
+AKTUALIS_NAP_KERETVASTAGSAG = 3
+
+
+# ------------------------------------------------------------
+# 📅 FELSŐ CÍM
+# ------------------------------------------------------------
+
+HONAP_CIM_X = 400
+HONAP_CIM_Y = 27
+
+HONAP_CIM_BETUTIPUS = "Broock"
+HONAP_CIM_BETUMERET = 25
+
+
+# ------------------------------------------------------------
+# 📆 HÉT NAPJAINAK FEJLÉCE
+# ------------------------------------------------------------
+
+HETNAP_FEJLEC_Y = 68
+
+HETNAP_FEJLEC_BETUTIPUS = "Broock"
+HETNAP_FEJLEC_BETUMERET = 12
+
+HETNAP_FEJLEC_MAGASSAG = 30
+HETNAP_FEJLEC_KEREKITES = 10
+
+HETNAP_FEJLEC_HATTERSZIN = "#13263D"
+
+
+# ------------------------------------------------------------
+# 🟦 NAPKÁRTYÁK MÉRETE
+# ------------------------------------------------------------
+
+NAPKARTYA_SZELESSEG = 103
+NAPKARTYA_MAGASSAG = 58
+
+NAPKARTYA_KEREKITES = 13
+
+# Kártyák közötti távolság
+NAPKARTYA_VIZSZINTES_HELY = 8
+NAPKARTYA_FUGGOLEGES_HELY = 7
+
+# Első kártyasor felső pozíciója
+NAPKARTYA_KEZDO_Y = 92
+
+
+# ------------------------------------------------------------
+# 🔢 DÁTUMSZÁM
+# ------------------------------------------------------------
+
+NAP_SZAM_BETUTIPUS = "Broock"
+NAP_SZAM_BETUMERET = 20
+NAP_SZAM_SZIN = "#FFFFFF"
+
+# Pozíció a kártya bal felső sarkához képest
+NAP_SZAM_X_ELTOLAS = 10
+NAP_SZAM_Y_ELTOLAS = 7
+
+
+# ------------------------------------------------------------
+# 🎉 NÉVNAP
+# ------------------------------------------------------------
+
+NEVNAP_BETUTIPUS = "Broock"
+NEVNAP_BETUMERET = 8
+NEVNAP_SZIN = "#FFFFFF"
+
+# Pozíció a kártya bal alsó részén
+NEVNAP_X_ELTOLAS = 9
+NEVNAP_Y_ELTOLAS = 45
+
+
+# ------------------------------------------------------------
+# ☀️🌙 MŰSZAK IKON
+# ------------------------------------------------------------
+
+MUSZAK_IKON_MERET = 20
+
+# Pozíció a kártya jobb felső sarkához képest
+MUSZAK_IKON_X_ELTOLAS = 12
+MUSZAK_IKON_Y_ELTOLAS = 11
+
+
+# ------------------------------------------------------------
+# 👧 PANNA JELÖLŐ
+# ------------------------------------------------------------
+
+PANNA_IKON_UTVONAL = "/home/andrispi/idojaras/menuk/panna.png"
+
+PANNA_IKON_MERET = (18, 18)
+
+# Jobb alsó sarokhoz képesti pozíció
+PANNA_IKON_X_ELTOLAS = 11
+PANNA_IKON_Y_ELTOLAS = 10
+
+
+# ------------------------------------------------------------
+# 👈👉 HÚZÁS / HÓNAPVÁLTÁS
+# ------------------------------------------------------------
+
+# Ennél kisebb mozdulat még sima bökésnek számít
+HUZAS_MINIMUM = 80
+
+# Animáció lépésenkénti elmozdulása pixelben
+ANIMACIO_LEPES = 40
+
+# Két animációs képkocka közötti idő ezredmásodpercben
+ANIMACIO_IDO = 15
+
+
+# ------------------------------------------------------------
+# 🏭 MŰSZAKBEOSZTÁS ALAPJA
+# ------------------------------------------------------------
+
+# 2026. január 3. = az első nappalos nap
+MUSZAK_ALAP_DATUM = date(2026, 1, 3)
+
+# A teljes ismétlődő 8 napos ciklus
+MUSZAK_CIKLUS = [
+    "nappal",
+    "nappal",
+    "ejszaka",
+    "ejszaka",
+    "szabad",
+    "szabad",
+    "szabad",
+    "szabad",
+]
+
+
+# ------------------------------------------------------------
+# ✏️ KÉZI MŰSZAK FELÜLÍRÁS
+# ------------------------------------------------------------
+
+# Ha egy konkrét napot kézzel át akarsz írni,
+# ide kell majd felvenni.
+#
+# Példa:
+# "2026-08-23": "nappal",
+
+MUSZAK_FELULIRAS = {
+}
+
+
+# ------------------------------------------------------------
+# 👧 PANNA ITTHONI NAPJAI
+# ------------------------------------------------------------
+
+# Ide egyszerűen felírhatod majd azokat a dátumokat,
+# amikor Panna nálatok van.
+#
+# Példa:
+# "2026-08-03",
+# "2026-08-04",
+
+PANNA_NAPOK = [
+]
+# ============================================================
+# 📅 NAPTÁR ÁLLAPOTA
+# ============================================================
+
+# Induláskor mindig az aktuális hónapot mutatjuk
+mai_nap = date.today()
+
+aktualis_ev = mai_nap.year
+aktualis_honap = mai_nap.month
+
+# Húzás kezdőpontja
+huzas_kezdete_x = None
+
+# Fut-e éppen hónapváltó animáció
+animacio_fut = False
+
+
+# ============================================================
+# 🏭 MŰSZAK KISZÁMÍTÁSA
+# ============================================================
+
+def muszak_lekeres(ev, honap, nap):
+
+    datum = date(ev, honap, nap)
+
+    # ---------------------------------
+    # Kézi felülírás ellenőrzése
+    # ---------------------------------
+
+    datum_szoveg = datum.strftime("%Y-%m-%d")
+
+    if datum_szoveg in MUSZAK_FELULIRAS:
+        return MUSZAK_FELULIRAS[datum_szoveg]
+
+
+    # ---------------------------------
+    # Automatikus 8 napos ciklus
+    # ---------------------------------
+
+    eltelt_napok = (datum - MUSZAK_ALAP_DATUM).days
+
+    ciklus_hely = eltelt_napok % len(MUSZAK_CIKLUS)
+
+    return MUSZAK_CIKLUS[ciklus_hely]
+
+
+# ============================================================
+# 👧 PANNA NAP ELLENŐRZÉSE
+# ============================================================
+
+def panna_itthon_van(ev, honap, nap):
+
+    datum = date(ev, honap, nap)
+
+    datum_szoveg = datum.strftime("%Y-%m-%d")
+
+    return datum_szoveg in PANNA_NAPOK
+
+
+# ============================================================
+# 📆 ELŐZŐ HÓNAP KISZÁMÍTÁSA
+# ============================================================
+
+def elozo_honap(ev, honap):
+
+    if honap == 1:
+        return ev - 1, 12
+
+    return ev, honap - 1
+
+
+# ============================================================
+# 📆 KÖVETKEZŐ HÓNAP KISZÁMÍTÁSA
+# ============================================================
+
+def kovetkezo_honap(ev, honap):
+
+    if honap == 12:
+        return ev + 1, 1
+
+    return ev, honap + 1
+
+
+# ============================================================
+# 🇭🇺 HÓNAPNEVEK
+# ============================================================
+
+HONAP_NEVEK = [
+    "",
+    "Január",
+    "Február",
+    "Március",
+    "Április",
+    "Május",
+    "Június",
+    "Július",
+    "Augusztus",
+    "Szeptember",
+    "Október",
+    "November",
+    "December",
+]
+
+
+# ============================================================
+# 🇭🇺 HÉT NAPJAI
+# ============================================================
+
+HETNAP_NEVEK = [
+    "Hétfő",
+    "Kedd",
+    "Szerda",
+    "Csütörtök",
+    "Péntek",
+    "Szombat",
+    "Vasárnap",
+]
+
+
+# ============================================================
+# 📐 NAPKÁRTYA X POZÍCIÓ KISZÁMÍTÁSA
+# ============================================================
+
+def napkartya_x(oszlop):
+
+    teljes_szelesseg = (
+        7 * NAPKARTYA_SZELESSEG
+        + 6 * NAPKARTYA_VIZSZINTES_HELY
+    )
+
+    kezdo_x = (KEPERNYO_SZELESSEG - teljes_szelesseg) // 2
+
+    return kezdo_x + oszlop * (
+        NAPKARTYA_SZELESSEG + NAPKARTYA_VIZSZINTES_HELY
+    )
+
+
+# ============================================================
+# 📐 NAPKÁRTYA Y POZÍCIÓ KISZÁMÍTÁSA
+# ============================================================
+
+def napkartya_y(sor):
+
+    return NAPKARTYA_KEZDO_Y + sor * (
+        NAPKARTYA_MAGASSAG + NAPKARTYA_FUGGOLEGES_HELY
+    )
+
+# ============================================================
+# 🎨 LEKEREKÍTETT TÉGLALAP RAJZOLÁSA
+# ============================================================
+
+def lekerekitett_teglalap(
+    canvas,
+    x1,
+    y1,
+    x2,
+    y2,
+    sugar,
+    szin,
+    keretszin="",
+    keretvastagsag=0,
+    tags=None
+):
+
+    pontok = [
+        x1 + sugar, y1,
+        x2 - sugar, y1,
+        x2, y1,
+        x2, y1 + sugar,
+        x2, y2 - sugar,
+        x2, y2,
+        x2 - sugar, y2,
+        x1 + sugar, y2,
+        x1, y2,
+        x1, y2 - sugar,
+        x1, y1 + sugar,
+        x1, y1,
+    ]
+
+    return canvas.create_polygon(
+        pontok,
+        smooth=True,
+        splinesteps=36,
+        fill=szin,
+        outline=keretszin,
+        width=keretvastagsag,
+        tags=tags
+    )
+
+
+# ============================================================
+# 🎨 EGYETLEN NAPKÁRTYA KIRAJZOLÁSA
+# ============================================================
+
+def napkartya_rajzol(canvas, ev, honap, nap, oszlop, sor, tag):
+
+    x = napkartya_x(oszlop)
+    y = napkartya_y(sor)
+
+    muszak = muszak_lekeres(ev, honap, nap)
+
+
+    # --------------------------------------------------------
+    # 🎨 KÁRTYA SZÍNE MŰSZAK SZERINT
+    # --------------------------------------------------------
+
+    if muszak == "nappal":
+        kartya_szin = NAPPAL_NEGYZETSZIN
+
+    elif muszak == "ejszaka":
+        kartya_szin = EJSZAKA_NEGYZETSZIN
+
+    else:
+        kartya_szin = SZABADNAP_NEGYZETSZIN
+
+
+    # --------------------------------------------------------
+    # 🔴 AKTUÁLIS NAP KERETE
+    # --------------------------------------------------------
+
+    datum = date(ev, honap, nap)
+
+    if datum == date.today():
+        keretszin = AKTUALIS_NAP_KERETSZIN
+        keretvastagsag = AKTUALIS_NAP_KERETVASTAGSAG
+    else:
+        keretszin = NAP_KERETSZIN
+        keretvastagsag = NAP_KERETVASTAGSAG
+
+
+    # --------------------------------------------------------
+    # 🟦 KÁRTYA
+    # --------------------------------------------------------
+
+    lekerekitett_teglalap(
+        canvas,
+        x,
+        y,
+        x + NAPKARTYA_SZELESSEG,
+        y + NAPKARTYA_MAGASSAG,
+        NAPKARTYA_KEREKITES,
+        kartya_szin,
+        keretszin,
+        keretvastagsag,
+        tag
+    )
+
+
+    # --------------------------------------------------------
+    # 🔢 DÁTUMSZÁM
+    # --------------------------------------------------------
+
+    canvas.create_text(
+        x + NAP_SZAM_X_ELTOLAS,
+        y + NAP_SZAM_Y_ELTOLAS,
+        text=str(nap),
+        fill=NAP_SZAM_SZIN,
+        font=(NAP_SZAM_BETUTIPUS, NAP_SZAM_BETUMERET),
+        anchor="nw",
+        tags=tag
+    )
+
+
+    # --------------------------------------------------------
+    # ☀️🌙 MŰSZAK JELÖLÉS
+    # --------------------------------------------------------
+
+    if muszak == "nappal":
+        muszak_jel = "☀"
+
+    elif muszak == "ejszaka":
+        muszak_jel = "☾"
+
+    else:
+        muszak_jel = "●"
+
+    canvas.create_text(
+        x + NAPKARTYA_SZELESSEG - MUSZAK_IKON_X_ELTOLAS,
+        y + MUSZAK_IKON_Y_ELTOLAS,
+        text=muszak_jel,
+        fill="white",
+        font=("Arial", MUSZAK_IKON_MERET),
+        anchor="ne",
+        tags=tag
+    )
+
+
+    # --------------------------------------------------------
+    # 🎉 NÉVNAP HELYE
+    # --------------------------------------------------------
+
+    # A tényleges névnapot a következő részben kötjük rá.
+    # Egyelőre üresen hagyjuk.
+    nevnap = ""
+
+    canvas.create_text(
+        x + NEVNAP_X_ELTOLAS,
+        y + NEVNAP_Y_ELTOLAS,
+        text=nevnap,
+        fill=NEVNAP_SZIN,
+        font=(NEVNAP_BETUTIPUS, NEVNAP_BETUMERET),
+        anchor="sw",
+        tags=tag
+    )
+
+
+    # --------------------------------------------------------
+    # 👧 PANNA IKON
+    # --------------------------------------------------------
+
+    if panna_itthon_van(ev, honap, nap):
+
+        if hasattr(canvas, "panna_ikon"):
+
+            canvas.create_image(
+                x + NAPKARTYA_SZELESSEG - PANNA_IKON_X_ELTOLAS,
+                y + NAPKARTYA_MAGASSAG - PANNA_IKON_Y_ELTOLAS,
+                image=canvas.panna_ikon,
+                anchor="se",
+                tags=tag
+            )
+
+
+# ============================================================
+# 📅 TELJES HÓNAP KIRAJZOLÁSA
+# ============================================================
+
+def honap_rajzol(canvas, ev, honap, tag="naptar"):
+
+    # --------------------------------------------------------
+    # 📆 ÉV + HÓNAP CÍM
+    # --------------------------------------------------------
+
+    canvas.create_text(
+        HONAP_CIM_X,
+        HONAP_CIM_Y,
+        text=f"{ev}. {HONAP_NEVEK[honap]}",
+        fill=HONAP_SZOVEG_SZIN,
+        font=(HONAP_CIM_BETUTIPUS, HONAP_CIM_BETUMERET),
+        anchor="center",
+        tags=tag
+    )
+
+
+    # --------------------------------------------------------
+    # 📆 HÉT NAPJAINAK FEJLÉCE
+    # --------------------------------------------------------
+
+    for oszlop, napnev in enumerate(HETNAP_NEVEK):
+
+        x = napkartya_x(oszlop)
+
+        if oszlop == 5:
+            szoveg_szin = SZOMBAT_SZOVEG_SZIN
+
+        elif oszlop == 6:
+            szoveg_szin = VASARNAP_SZOVEG_SZIN
+
+        else:
+            szoveg_szin = HETKOZNAP_SZOVEG_SZIN
+
+
+        lekerekitett_teglalap(
+            canvas,
+            x,
+            HETNAP_FEJLEC_Y,
+            x + NAPKARTYA_SZELESSEG,
+            HETNAP_FEJLEC_Y + HETNAP_FEJLEC_MAGASSAG,
+            HETNAP_FEJLEC_KEREKITES,
+            HETNAP_FEJLEC_HATTERSZIN,
+            tags=tag
+        )
+
+
+        canvas.create_text(
+            x + NAPKARTYA_SZELESSEG // 2,
+            HETNAP_FEJLEC_Y + HETNAP_FEJLEC_MAGASSAG // 2,
+            text=napnev,
+            fill=szoveg_szin,
+            font=(HETNAP_FEJLEC_BETUTIPUS, HETNAP_FEJLEC_BETUMERET),
+            anchor="center",
+            tags=tag
+        )
+
+
+    # --------------------------------------------------------
+    # 📅 HÓNAP NAPJAI
+    # --------------------------------------------------------
+
+    honap_adatok = calendar.monthcalendar(ev, honap)
+
+    for sor, het in enumerate(honap_adatok):
+
+        for oszlop, nap in enumerate(het):
+
+            # A 0 azt jelenti, hogy az adott helyen
+            # nincs nap ebben a hónapban.
+            if nap == 0:
+                continue
+
+            napkartya_rajzol(
+                canvas,
+                ev,
+                honap,
+                nap,
+                oszlop,
+                sor,
+                tag
+            )
+
+# ============================================================
+# 👧 PANNA IKON BETÖLTÉSE
+# ============================================================
+
+def panna_ikon_betolt(canvas):
+
+    try:
+        panna_img = Image.open(PANNA_IKON_UTVONAL).convert("RGBA")
+
+        panna_img = panna_img.resize(
+            PANNA_IKON_MERET,
+            Image.Resampling.LANCZOS
+        )
+
+        canvas.panna_ikon = ImageTk.PhotoImage(panna_img)
+
+    except:
+        canvas.panna_ikon = None
+
+
+# ============================================================
+# 📅 NAPTÁR MEGJELENÍTÉSE
+# ============================================================
+
+def naptar_megjelenit(canvas):
+
+    global aktualis_ev
+    global aktualis_honap
+
+    # Régi oldal törlése
+    canvas.delete("all")
+
+    # Háttér
+    canvas.configure(bg=HATTER_SZIN)
+
+    # Panna ikon betöltése
+    panna_ikon_betolt(canvas)
+
+    # Aktuális hónap kirajzolása
+    honap_rajzol(
+        canvas,
+        aktualis_ev,
+        aktualis_honap,
+        "naptar"
+    )
+
+    # A teljes naptár legyen az "oldal" réteg része is.
+    # Így a szenzor 2 másodperces frissítése után is
+    # a naptár marad legfelül.
+    canvas.addtag_withtag("oldal", "naptar")
+
+
+# ============================================================
+# 👆 HÚZÁS KEZDETE
+# ============================================================
+
+def naptar_huzas_kezd(event):
+
+    global huzas_kezdete_x
+
+    # Ha animáció fut, nem indítunk új húzást
+    if animacio_fut:
+        return
+
+    huzas_kezdete_x = event.x
+
+
+# ============================================================
+# 👆 HÚZÁS VÉGE
+# ============================================================
+
+def naptar_huzas_vege(event):
+
+    global huzas_kezdete_x
+
+    if animacio_fut:
+        return
+
+    if huzas_kezdete_x is None:
+        return
+
+    huzas_vege_x = event.x
+
+    elmozdulas = huzas_vege_x - huzas_kezdete_x
+
+    # Kezdőpont törlése
+    huzas_kezdete_x = None
+
+
+    # --------------------------------------------------------
+    # 👈 JOBBRÓL BALRA = KÖVETKEZŐ HÓNAP
+    # --------------------------------------------------------
+
+    if elmozdulas <= -HUZAS_MINIMUM:
+
+        honap_valtas_animacioval(
+            event.widget,
+            "kovetkezo"
+        )
+
+        return
+
+
+    # --------------------------------------------------------
+    # 👉 BALRÓL JOBBRA = ELŐZŐ HÓNAP
+    # --------------------------------------------------------
+
+    if elmozdulas >= HUZAS_MINIMUM:
+
+        honap_valtas_animacioval(
+            event.widget,
+            "elozo"
+        )
+
+        return
+
+
+# ============================================================
+# 🖱️ NAPTÁR ÉRINTÉS ESEMÉNYEK BEKAPCSOLÁSA
+# ============================================================
+
+def naptar_erintes_bekapcsol(canvas):
+
+    canvas.bind(
+        "<ButtonPress-1>",
+        naptar_huzas_kezd
+    )
+
+    canvas.bind(
+        "<ButtonRelease-1>",
+        naptar_huzas_vege
+    )
+# ============================================================
+# 👈👉 ANIMÁLT HÓNAPVÁLTÁS
+# ============================================================
+
+def honap_valtas_animacioval(canvas, irany):
+
+    global aktualis_ev
+    global aktualis_honap
+    global animacio_fut
+
+    # Ha már fut animáció, nem indítunk még egyet
+    if animacio_fut:
+        return
+
+    animacio_fut = True
+
+
+    # --------------------------------------------------------
+    # 📅 ÚJ HÓNAP KISZÁMÍTÁSA
+    # --------------------------------------------------------
+
+    if irany == "kovetkezo":
+
+        uj_ev, uj_honap = kovetkezo_honap(
+            aktualis_ev,
+            aktualis_honap
+        )
+
+        # Régi hónap balra megy
+        regi_irany = -1
+
+        # Új hónap jobbról érkezik
+        uj_kezdo_x = KEPERNYO_SZELESSEG
+
+    else:
+
+        uj_ev, uj_honap = elozo_honap(
+            aktualis_ev,
+            aktualis_honap
+        )
+
+        # Régi hónap jobbra megy
+        regi_irany = 1
+
+        # Új hónap balról érkezik
+        uj_kezdo_x = -KEPERNYO_SZELESSEG
+
+
+    # --------------------------------------------------------
+    # 🏷️ RÉGI HÓNAP ÁTNEVEZÉSE
+    # --------------------------------------------------------
+
+    canvas.dtag("naptar", "oldal")
+    canvas.addtag_withtag("regi_honap", "naptar")
+    canvas.dtag("naptar", "naptar")
+
+
+    # --------------------------------------------------------
+    # 📅 ÚJ HÓNAP KIRAJZOLÁSA
+    # --------------------------------------------------------
+
+    honap_rajzol(
+        canvas,
+        uj_ev,
+        uj_honap,
+        "uj_honap"
+    )
+
+    # Az új hónapot kivisszük a képernyő mellé
+    canvas.move(
+        "uj_honap",
+        uj_kezdo_x,
+        0
+    )
+
+
+    # --------------------------------------------------------
+    # 🎞️ ANIMÁCIÓ
+    # --------------------------------------------------------
+
+    megtett_ut = 0
+
+    def animacio_lepes():
+
+        nonlocal megtett_ut
+
+        global aktualis_ev
+        global aktualis_honap
+        global animacio_fut
+
+
+        # Még hátralévő út
+        maradek = KEPERNYO_SZELESSEG - megtett_ut
+
+        # Normál lépés vagy az utolsó kisebb lépés
+        lepes = min(ANIMACIO_LEPES, maradek)
+
+
+        # ----------------------------------------------------
+        # 👈 KÖVETKEZŐ HÓNAP
+        # ----------------------------------------------------
+
+        if irany == "kovetkezo":
+
+            canvas.move(
+                "regi_honap",
+                -lepes,
+                0
+            )
+
+            canvas.move(
+                "uj_honap",
+                -lepes,
+                0
+            )
+
+
+        # ----------------------------------------------------
+        # 👉 ELŐZŐ HÓNAP
+        # ----------------------------------------------------
+
+        else:
+
+            canvas.move(
+                "regi_honap",
+                lepes,
+                0
+            )
+
+            canvas.move(
+                "uj_honap",
+                lepes,
+                0
+            )
+
+
+        megtett_ut += lepes
+
+
+        # ----------------------------------------------------
+        # 🎬 ANIMÁCIÓ FOLYTATÁSA
+        # ----------------------------------------------------
+
+        if megtett_ut < KEPERNYO_SZELESSEG:
+
+            canvas.after(
+                ANIMACIO_IDO,
+                animacio_lepes
+            )
+
+            return
+
+
+        # ----------------------------------------------------
+        # ✅ ANIMÁCIÓ VÉGE
+        # ----------------------------------------------------
+
+        canvas.delete("regi_honap")
+
+        # Az új hónap lesz az aktuális naptár
+        canvas.addtag_withtag(
+            "naptar",
+            "uj_honap"
+        )
+
+        canvas.dtag(
+            "uj_honap",
+            "uj_honap"
+        )
+
+        canvas.addtag_withtag(
+            "oldal",
+            "naptar"
+        )
+
+        aktualis_ev = uj_ev
+        aktualis_honap = uj_honap
+
+        animacio_fut = False
+
+
+    # Animáció indítása
+    animacio_lepes()
+
+
+# ============================================================
+# 📅 NAPTÁR ÉRINTÉSÉNEK INDÍTÁSA
+# ============================================================
+
+def naptar_aktiv(canvas):
+
+    # Húzás bekapcsolása
+    naptar_erintes_bekapcsol(canvas)
