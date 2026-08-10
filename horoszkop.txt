@@ -1,0 +1,118 @@
+	<div class="m-horoscope__cntWrap col-12 col-sm-9 col-md-8">
+					<span class="m-horoscope__txt">Ma könnyen magával ragadhat valaki kisugárzása, különösen akkor, ha szellemileg is izgalmasnak találod. Egy beszélgetés gyorsan személyesebb, intimebb irányt vehet, és olyan titkok is előkerülhetnek, amelyek közelebb hoznak egymáshoz. Ugyanakkor ne építs egész történetet néhány kedves mondatra. Élvezd a vonzalmat, de hagyj időt arra is, hogy kiderüljön, mi van mögötte.</span>
+					<div class="m-horoscope__socialWrap u-cf">
+						<a class="m-horoscope__link u-fl" href="https://nlc.hu/horoszkop/kos/">Kos jellemzése, horoszkópjai</a>
+						<div class="u-fr hidden-xs-down">
+							<a class="m-horoscope__socialLink -fbIcon social-facebook explicit-window" title="Kos csillagjegy horoszkópjának megosztása a Facebookon!"
+							   href="http://www.facebook.com/share.php?u=https%3A%2F%2Fnlc.hu%2Fhoroszkop%2Fkos/">
+								<i class="fab fa-facebook-f" aria-hidden="true"></i>
+							</a>
+
+							<a class="m-horoscope__socialLink -emailIcon social-mail explicit-window" title="Kos csillagjegy horoszkópjának megosztása a E-mailben!"
+							   target="_blank"
+							   href="mailto:?subject=nlc.hu:Kos&body=Ez a horoszkóp téged is érdekelhet:%0A%0AKos%0Ahttps%3A%2F%2Fnlc.hu%2Fhoroszkop_napi%2F">
+								<i class="far fa-envelope" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			
+
+		</div>
+					<div class="m-horoscope__item row">
+			<div class="col-12 col-sm-3 col-md-4">
+				<div class="m-horoscope__pctWrap">
+					<a title="Bika csillagjegy horoszkópja"
+					   href="https://nlc.hu/horoszkop/bika/">
+						<img class="m-horoscope__img" alt="Bika"
+							 src="https://nlc.hu/themes/nlcafe/images/horoszkop/widget/bika-pct-version.png" loading="lazy"/>
+					</a>
+				</div>
+				<div class="m-horoscope__subCntWrap">
+					<a title="Bika csillagjegy horoszkópja"
+					   href="https://nlc.hu/horoszkop/bika/">
+						<h2 class="m-horoscope__name">Bika</h2>
+					</a>
+					<span class="m-horoscope__date">
+						04.20 - 05.20					</span>
+					<div class="hidden-sm-up">
+						<a class="m-horoscope__socialLink -fbIcon social-facebook explicit-window" title="Bika csillagjegy horoszkópjának megosztása a Facebookon!"
+						   href="http://www.facebook.com/share.php?u=https%3A%2F%2Fnlc.hu%2Fhoroszkop%2Fbika/">
+							<i class="fab fa-facebook-f" aria-hidden="true"></i>
+						</a>
+
+						<a class="m-horoscope__socialLink -emailIcon social-mail explicit-window" title="Bika csillagjegy horoszkópjának megosztása a E-mailben!"
+						   href="mailto:?subject=nlc.hu:Bika&body=Ez a horoszkóp téged is érdekelhet:%0A%0ABika%0Ahttps%3A%2F%2Fnlc.hu%2Fhoroszkop_napi%2F">
+							<i class="far fa-envelope" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+							<div class="m-horoscope__cntWrap col-12 col-sm-9 col-md-8">
+					<span class="m-horoscope__txt">A romantika ma könnyen megszépítheti a valóságot, ami kellemes érzés, csak ne felejtsd el levenni időnként a rózsaszín szemüveget. Párkapcsolatban egy őszinte vallomás vagy érzékeny beszélgetés mélyítheti a köztetek lévő bizalmat. Ha egyedülálló vagy, valaki különösen vonzónak tűnhet, de most még nem biztos, hogy mindent jól látsz vele kapcsolatban.</span>
+					<div class="m-horoscope__socialWrap u-cf">
+						<a class="m-horoscope__link u-fl" href="https://nlc.hu/horoszkop/bika/">Bika jellemzése, horoszkópjai</a>
+						<div class="u-fr hidden-xs-down">
+							<a class="m-horoscope__socialLink -fbIcon social-facebook explicit-window" title="Bika csillagjegy horoszkópjának megosztása a Facebookon!"
+							   href="http://www.facebook.com/share.php?u=https%3A%2F%2Fnlc.hu%2Fhoroszkop%2Fbika/">
+								<i class="fab fa-facebook-f" aria-hidden="true"></i>
+							</a>
+
+							<a class="m-horoscope__socialLink -emailIcon social-mail explicit-window" title="Bika csillagjegy horoszkópjának megosztása a E-mailben!"
+							   target="_blank"
+							   href="mailto:?subject=nlc.hu:Bika&body=Ez a horoszkóp téged is érdekelhet:%0A%0ABika%0Ahttps%3A%2F%2Fnlc.hu%2Fhoroszkop_napi%2F">
+								<i class="far fa-envelope" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			
+
+		</div>
+					<div class="m-horoscope__item row">
+			<div class="col-12 col-sm-3 col-md-4">
+				<div class="m-horoscope__pctWrap">
+					<a title="Ikrek csillagjegy horoszkópja"
+					   href="https://nlc.hu/horoszkop/ikrek/">
+						<img class="m-horoscope__img" alt="Ikrek"
+							 src="https://nlc.hu/themes/nlcafe/images/horoszkop/widget/ikrek-pct-version.png" loading="lazy"/>
+					</a>
+				</div>
+				<div class="m-horoscope__subCntWrap">
+					<a title="Ikrek csillagjegy horoszkópja"
+					   href="https://nlc.hu/horoszkop/ikrek/">
+						<h2 class="m-horoscope__name">Ikrek</h2>
+					</a>
+					<span class="m-horoscope__date">
+						05.21 - 06.21					</span>
+					<div class="hidden-sm-up">
+						<a class="m-horoscope__socialLink -fbIcon social-facebook explicit-window" title="Ikrek csillagjegy horoszkópjának megosztása a Facebookon!"
+						   href="http://www.facebook.com/share.php?u=https%3A%2F%2Fnlc.hu%2Fhoroszkop%2Fikrek/">
+							<i class="fab fa-facebook-f" aria-hidden="true"></i>
+						</a>
+
+						<a class="m-horoscope__socialLink -emailIcon social-mail explicit-window" title="Ikrek csillagjegy horoszkópjának megosztása a E-mailben!"
+						   href="mailto:?subject=nlc.hu:Ikrek&body=Ez a horoszkóp téged is érdekelhet:%0A%0AIkrek%0Ahttps%3A%2F%2Fnlc.hu%2Fhoroszkop_napi%2F">
+							<i class="far fa-envelope" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+							<div class="m-horoscope__cntWrap col-12 col-sm-9 col-md-8">
+					<span class="m-horoscope__txt">A szavaidnak ma különös ereje lehet. Könnyen elbűvölhetsz valakit humorral, kíváncsisággal vagy egy váratlanul őszinte vallomással, és egy egyszerű beszélgetésből gyorsan kialakulhat valami sokkal izgalmasabb. Mielőtt azonban túl messzire szaladna a fantáziád, figyeld meg, hogy a másik tettei is azt mutatják-e, amit a szavai ígérnek. A valódi érdeklődéshez következetesség is tartozik.</span>
+					<div class="m-horoscope__socialWrap u-cf">
+						<a class="m-horoscope__link u-fl" href="https://nlc.hu/horoszkop/ikrek/">Ikrek jellemzése, horoszkópjai</a>
+						<div class="u-fr hidden-xs-down">
+							<a class="m-horoscope__socialLink -fbIcon social-facebook explicit-window" title="Ikrek csillagjegy horoszkópjának megosztása a Facebookon!"
+							   href="http://www.facebook.com/share.php?u=https%3A%2F%2Fnlc.hu%2Fhoroszkop%2Fikrek/">
+								<i class="fab fa-facebook-f" aria-hidden="true"></i>
+							</a>
+
+							<a class="m-horoscope__socialLink -emailIcon social-mail explicit-window" title="Ikrek csillagjegy horoszkópjának megosztása a E-mailben!"
+							   target="_blank"
+							   href="mailto:?subject=nlc.hu:Ikrek&body=Ez a horoszkóp téged is érdekelhet:%0A%0AIkrek%0Ahttps%3A%2F%2Fnlc.hu%2Fhoroszkop_napi%2F">
+								<i class="far fa-envelope" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
