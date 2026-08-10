@@ -1,0 +1,63 @@
+	
+<div id="first_head" style="background-image: url(images/stations/030137_debrecen_kapitany_utca.jpg);">
+	<div class="container">
+		<div class="subpage text-uppercase">mol - Debrecen, Sámsoni út</div>
+	</div>
+</div>
+<main class="ht_main pb-5" id="tartalom">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<img src="images/partner_logo/new_site/101006_bb1bd22248888770445410b0e36db4e1.png" width="80" height="80" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="Mol">
+			<span class="subpage text-uppercase text-dark fs-3">Debrecen, Sámsoni út</span>
+		</div>
+	</div>
+		<div class="d-flex align-items-center mb-3">
+			<div class="d-flex ms-auto">
+			</div>
+		</div>
+	
+
+
+
+	
+<div id="first_head" style="background-image: url(images/stations/024828_debrecen_kassai_ut.jpg);">
+	<div class="container">
+		<div class="subpage text-uppercase">omv - Debrecen, Kassai út 92.</div>
+	</div>
+</div>
+<main class="ht_main pb-5" id="tartalom">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<img src="images/partner_logo/new_site/omv.png" width="80" height="80" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="Omv">
+			<span class="subpage text-uppercase text-dark fs-3">Debrecen, Kassai út 92.</span>
+		</div>
+	</div>
+		<div class="d-flex align-items-center mb-3">
+			<div class="d-flex ms-auto">
+			</div>
+		</div>
+	
+
+
+
+
+	
+<div id="first_head" style="background-image: url(images/stations/021527_debrecen_boszormenyi_ut.jpg);">
+	<div class="container">
+		<div class="subpage text-uppercase">shell - Debrecen, Böszörményi út 1.</div>
+	</div>
+</div>
+<main class="ht_main pb-5" id="tartalom">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<img src="images/partner_logo/new_site/101016_shell.png" width="80" height="80" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="Shell">
+			<span class="subpage text-uppercase text-dark fs-3">Debrecen, Böszörményi út 1.</span>
+		</div>
+	</div>
+		<div class="d-flex align-items-center mb-3">
+			<div class="d-flex ms-auto">
+			</div>
+		</div>
