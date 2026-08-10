@@ -1,0 +1,48 @@
+https://www.agroinform.hu/idojaras
+
+Innen ahogy a json be látni szeretném:
+
+Gázolaj : 657 (mellette a csökkenő vagy növekvő nyíl)
+Benzin: 576 (mellette a csökkenő vagy növekvő nyíl)
+
+
+
+</div>
+							<div class="termenypiac_exchange_rate clearfix termenypiac_exchange_rate_header p-1">
+			<div class="exchange_rate_box rate_down fuel-line">
+				<a href="/gazolaj-arak" title="Gázolaj árak">
+				    <div class="type">Gázolaj árak</div>
+					<div class="text-right price rate_down">
+						657 Ft
+						<span class="ml-1 arrow"></span>
+					</div>
+				</a>
+			</div>
+			<div class="exchange_rate_box rate_down fuel-line">
+				<a href="/benzin-arak" title="Benzin árak">
+				    <div class="type">Benzin árak</div>
+					<div class="price text-right rate_down">
+						576 Ft
+						<span class="ml-1 arrow"></span>
+					</div>
+
+				</a>
+			</div>
+		</div>
+				<div class="termenypiac_exchange_rate clearfix termenypiac_exchange_rate_header p-1">
+			<div>
+			
+					<div class="exchange_rate_box rate_up">
+						<span class="currency ml-3">EUR</span>
+						<span class="rate">363.9 Ft</span>
+						<span class="arrow" title="2026-08-10 08:59:04: 362.58 Ft"></span>
+					</div>
+											</div>
+						<div>
+					
+					<div class="exchange_rate_box rate_up">
+						<span class="currency ml-3">USD</span>
+						<span class="rate">315.16 Ft</span>
+						<span class="arrow" title="2026-08-10 08:59:04: 313.77 Ft"></span>
+					</div>
+											</div>

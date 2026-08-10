@@ -1,0 +1,87 @@
+https://holtankoljak.hu/mol_debrecen_151#tartalom
+
+értékek amik és ahogy ki szeretnék olvasni belőlük, csak ennyit semmi mást :
+
+2026-08-08
+Dizel (Premium B7)
+755.0 Ft/liter
+
+
+2026-08-08
+95 (E10)
+573.0 Ft/liter
+
+
+2026-08-08
+Dizel (B7)
+656.0 Ft/liter
+
+
+2026-08-08
+100 (E5)
+659.0 Ft/liter
+
+
+<body OnLoad="get_scr(); getGPS(); ">
+
+<div class="row mb-3 mt-3">
+	<div class="d-flex mb-3">
+		<div class="rounded-start bg-dark text-center "><img src="images/ua_pin/lpg.png" width="80" height="80"></div>
+		<div class="w-100 bg-dark d-flex atl ps-5 align-items-center position-relative">
+		<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">2026-07-17</span>
+			<span class="ar">348.0 <small>Ft/liter</small></span>
+		</div>
+				<div class="px-2 bg-warning rounded-end rounded-end text-dark d-flex justify-content-center align-items-center">
+					<img src="images/exclamation-round-svgrepo-com.svg" width="50px" style="color:#fff;" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="A környező (10km) kutak átagáránál (348.0) magasabb<br>" /></div>
+	</div>
+	<div class="d-flex mb-3">
+		<div class="rounded-start bg-dark text-center "><img src="images/ua_pin/premium_gazolaj.png" width="80" height="80"></div>
+		<div class="w-100 bg-dark d-flex atl ps-5 align-items-center position-relative">
+		<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">2026-08-08</span>
+			<span class="ar">755.0 <small>Ft/liter</small></span>
+		</div>
+				<div class="px-2 bg-warning rounded-end rounded-end text-dark d-flex justify-content-center align-items-center">
+					<img src="images/exclamation-round-svgrepo-com.svg" width="50px" style="color:#fff;" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="A környező (10km) kutak átagáránál (734.2) magasabb<br>" /></div>
+	</div>
+	<div class="d-flex mb-3">
+		<div class="rounded-start bg-dark text-center "><img src="images/ua_pin/95-benzin-e10.png" width="80" height="80"></div>
+		<div class="w-100 atl d-flex atl ps-5 align-items-center position-relative">
+		<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">2026-08-08</span>
+			<span class="ar">573.0 <small>Ft/liter</small></span>
+		</div>
+				<div class="px-2 atl rounded-end rounded-end text-light d-flex justify-content-center align-items-center">
+					<img src="images/smile-circle-svgrepo-com.svg" width="50px" style="color:#fff;" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="A környező (10km) kutak átagáránál (574.8) alacsonyabb ár!<br>" /></div>
+	</div>
+	<div class="d-flex mb-3">
+		<div class="rounded-start bg-dark text-center "><img src="images/ua_pin/gazolaj.png" width="80" height="80"></div>
+		<div class="w-100 bg-dark d-flex atl ps-5 align-items-center position-relative">
+		<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">2026-08-08</span>
+			<span class="ar">656.0 <small>Ft/liter</small></span>
+		</div>
+				<div class="px-2 bg-warning rounded-end rounded-end text-dark d-flex justify-content-center align-items-center">
+					<img src="images/exclamation-round-svgrepo-com.svg" width="50px" style="color:#fff;" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="A környező (10km) kutak átagáránál (654.1) magasabb<br>" /></div>
+	</div>
+	<div class="d-flex mb-3">
+		<div class="rounded-start bg-dark text-center "><img src="images/ua_pin/100-benzin-e5.png" width="80" height="80"></div>
+		<div class="w-100 bg-dark d-flex atl ps-5 align-items-center position-relative">
+		<span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">2026-08-08</span>
+			<span class="ar">659.0 <small>Ft/liter</small></span>
+		</div>
+				<div class="px-2 bg-warning rounded-end rounded-end text-dark d-flex justify-content-center align-items-center">
+					<img src="images/exclamation-round-svgrepo-com.svg" width="50px" style="color:#fff;" data-bs-toggle="tooltip" data-bs-html="true" data-placement="top" title="A környező (10km) kutak átagáránál (658.7) magasabb<br>" /></div>
+	</div>
+</div>
+			<div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-dark mb-3">
+				<div class="d-grid w-100 mx-2">
+					<a href="https://utvonalterv.hu/?method=1&addresses=%5B%5B%2C%5D%2C%5B21.663541793823242%2C47.551517486572266%5D%5D" class="btn btn-sm btn-outline-dark border-0" target="_BLANK">Útvonal ide</a>
+				</div>
+				<div class="d-flex ms-auto">
+					<object id="svg1" data="images/utv_logo.svg" type="image/svg+xml"></object>
+					&nbsp;&nbsp;<strong>utvonalterv.hu</strong>
+				</div>
+			</div>
+			<div id="map" class="map map-home mt-1" style="height: 300px; width:100%;"></div>
+			<img src="images/stations/030137_debrecen_kapitany_utca.jpg" width="1140" height="780" class="img-fluid border border-success shadow mt-3">
+		</div>
+	</div>
+</div>
